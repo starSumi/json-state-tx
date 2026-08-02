@@ -1,0 +1,5 @@
+interface:
+  display_name: "JSON State Transactions"
+  short_description: "Safely update one versioned JSON state file"
+  default_prompt: "Use $json-state-tx to read and conditionally update this local JSON state file without overwriting a concurrent writer."
+

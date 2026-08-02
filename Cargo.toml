@@ -1,0 +1,41 @@
+[package]
+name = "json-state-tx"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.89"
+publish = false
+build = "build.rs"
+description = "Conditional transactions for a single JSON state file"
+license = "MIT"
+repository = "https://github.com/starSumi/json-state-tx"
+readme = "README.md"
+keywords = ["json", "transaction", "json-patch", "cas", "cli"]
+categories = ["command-line-utilities", "filesystem"]
+
+[lib]
+name = "json_state_tx"
+
+[[bin]]
+name = "json-state-tx"
+path = "src/main.rs"
+
+[dependencies]
+atomic-write-file = "0.3.0"
+clap = { version = "4.6.5", features = ["derive"] }
+json-patch = { version = "4.2.0", default-features = false }
+jsonschema = { version = "0.49.3", default-features = false }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0.151"
+sha2 = "0.11.0"
+thiserror = "2.0"
+
+[dev-dependencies]
+assert_cmd = "2.0"
+predicates = "3.1"
+proptest = "1.9"
+tempfile = "3.23"
+
+[profile.release]
+codegen-units = 1
+lto = "thin"
+strip = "symbols"
